@@ -29,6 +29,16 @@ body, a:link, a:visited, a:active{
   border:10px solid red;
 }
 .chickenDancer {
-  border:5px solid blue;
+ /* border:25px solid blue;*/
+  /*background-image: url("chickenImage.jpg");
+  background-size: 50px 50px;
+  width: 50px;*/
+}
+.pigDancer {
+  border:25px solid white;
+}
 
+#chicken {
+  height: 50px;
+  width: 50px;
 }

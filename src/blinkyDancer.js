@@ -32,3 +32,7 @@ BlinkyDancer.prototype.step = function() {
   Dancer.prototype.step.call(this);
   this.$node.toggle();
 }
+
+BlinkyDancer.prototype.lineUp = function(top) {
+  this.setPosition(top, 800);
+}
