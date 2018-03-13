@@ -16,7 +16,7 @@ $(document).ready(function() {
      * to the stage.
      */
     var dancerMakerFunctionName = $(this).data('BlinkyDancer');
-    console.log('clicked on alpaca')
+  
 
     // get the maker function for the kind of dancer we're supposed to make
     var dancerMakerFunction = window[dancerMakerFunctionName];
@@ -56,7 +56,7 @@ $(document).ready(function() {
     var chickenDancer = new ChickenDancer(
       939 * Math.random(),
       1086 * Math.random(),
-      5000
+      1000
     );
     window.dancers.push(chickenDancer);
     $('body').append(chickenDancer.$node);
