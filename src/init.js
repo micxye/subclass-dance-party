@@ -1,7 +1,7 @@
 $(document).ready(function() {
   window.dancers = [];
 
-  $('.addDancerButton').on('click', function(event) {
+  $('.addAlpacaButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
      * buttons on dancefloor.html. You should only need to make one small change to it.
      * As long as the "data-dancer-maker-function-name" attribute of a
@@ -16,6 +16,7 @@ $(document).ready(function() {
      * to the stage.
      */
     var dancerMakerFunctionName = $(this).data('BlinkyDancer');
+    console.log('clicked on alpaca')
 
     // get the maker function for the kind of dancer we're supposed to make
     var dancerMakerFunction = window[dancerMakerFunctionName];
@@ -23,8 +24,8 @@ $(document).ready(function() {
     // make a dancer with a random position
 
     var blinkyDancer = new BlinkyDancer(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
+      939 * Math.random(),
+      1086 * Math.random(),
       Math.random() * 1000
     );
     window.dancers.push(blinkyDancer);
@@ -53,12 +54,13 @@ $(document).ready(function() {
     // make a dancer with a random position
 
     var chickenDancer = new ChickenDancer(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
-      Math.random() * 500
+      939 * Math.random(),
+      1086 * Math.random(),
+      5000
     );
     window.dancers.push(chickenDancer);
     $('body').append(chickenDancer.$node);
+
   });
 
   $('.addPigButton').on('click', function(event) {
@@ -81,14 +83,31 @@ $(document).ready(function() {
     var dancerMakerFunction = window[dancerMakerFunctionName];
 
     // make a dancer with a random position
-
+    
     var pigDancer = new PigDancer(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
+      939 * Math.random(),
+      1086 * Math.random(),
       Math.random() * 1000
     );
     window.dancers.push(pigDancer);
     $('body').append(pigDancer.$node);
+      
+    //check for this pig's coordinates
+    var top = pigDancer.currentTop;
+    var left = pigDancer.currentLeft;
+    //loop through existing dancers
+    for (var i=0; i<window.dancers.length-1; i++) {
+      var currentDancerTop = window.dancers[i].currentTop;
+      var currentDancerLeft = window.dancers[i].currentLeft;
+      if (Math.abs(top-currentDancerTop) < 100 && Math.abs(left-currentDancerLeft) < 100 ) {
+        // console.log('close!');
+        window.dancers[i].fly();
+        $(window.dancers[i].$node).fadeOut("slow");
+      }
+      
+    }
+    
+
   });
 
   $('.lineUpButton').on('click', function(event) {
@@ -101,15 +120,21 @@ $(document).ready(function() {
     for (var i = 0; i < window.dancers.length; i++) {
       if (window.dancers[i].constructor === PigDancer) {
         pigCount++;
-        window.dancers[i].lineUp(500 + 50 * pigCount);
+        window.dancers[i].lineUp(250 + 50 * pigCount);
       } else if (window.dancers[i].constructor === ChickenDancer) {
         chickenCount++;
-        window.dancers[i].lineUp(500 + 50 * chickenCount);
+        window.dancers[i].lineUp(250 + 50 * chickenCount);
       } else if (window.dancers[i].constructor === BlinkyDancer) {
         blinkyCount++;
-        window.dancers[i].lineUp(500 + 50 * blinkyCount);
+        window.dancers[i].lineUp(250 + 50 * blinkyCount);
       }
     }
   });
+  
+  $(document).on('mouseenter', '.blinkyDancer', function() {
+    $(this).children('img').remove();
+    $(this).prepend('<img id="alpacaMouseover" src="alpacaMouseover.gif"/>');
+  });
+  
 });
 

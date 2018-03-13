@@ -1,7 +1,7 @@
 var ChickenDancer = function(top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
   this.$node.addClass('chickenDancer');
-  this.$node.prepend('<img id="chicken" src="chickenImage.jpg"/>');
+  this.$node.prepend('<img id="chicken" src="chickenImage.png"/>');
 }
 
 ChickenDancer.prototype = Object.create(Dancer.prototype);
@@ -13,10 +13,10 @@ ChickenDancer.prototype.step = function() {
   //it will waggle
 
    function beeLeft() {
-        this.$node.animate({left: "-=20"}, 500, "swing");
+        this.$node.animate({left: this.currentLeft - 10}, 250, "swing");
     }
     function beeRight() {
-        this.$node.animate({left: "+=20"}, 500, "swing");
+        this.$node.animate({left: this.currentLeft + 10}, 250, "swing");
     }
 
   beeRight.call(this);
@@ -24,5 +24,9 @@ ChickenDancer.prototype.step = function() {
 }
 
 ChickenDancer.prototype.lineUp = function(top) {
-  this.setPosition(top, 500);
+
+  Dancer.prototype.lineUp.call(this, top, 500);
+  this.currentLeft = 500;
+  this.currentTop = top;
+  
 }

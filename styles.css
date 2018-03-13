@@ -3,7 +3,9 @@ body, html{
 }
 body{
   margin: 0px;
-  background-color:#444;
+  background-image: url('farm-scenery.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
@@ -26,7 +28,9 @@ body, a:link, a:visited, a:active{
   position:absolute;
 }
 .blinkyDancer {
-  border:10px solid red;
+  /*border:10px solid red;*/
+  height: 100px;
+  width: 100px;
 }
 .chickenDancer {
  /* border:25px solid blue;*/
@@ -35,10 +39,24 @@ body, a:link, a:visited, a:active{
   width: 50px;*/
 }
 .pigDancer {
-  border:25px solid white;
 }
 
 #chicken {
-  height: 50px;
-  width: 50px;
+  height: 100px;
+  width: 100px;
+}
+
+#pig {
+  height: 100px;
+  width: 100px;
+}
+
+#alpacaMouseover {
+  height: 100px;
+  width: 100px;
+}
+
+#alpaca {
+  height: 100px;
+  width: 100px;
 }

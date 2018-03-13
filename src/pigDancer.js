@@ -1,7 +1,7 @@
 var PigDancer = function(top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
   this.$node.addClass('pigDancer');
-  
+  this.$node.prepend('<img id="pig" src="pig.png"/>');
 }
 
 PigDancer.prototype = Object.create(Dancer.prototype);
@@ -32,5 +32,5 @@ PigDancer.prototype.step = function() {
 }
 
 PigDancer.prototype.lineUp = function(top) {
-  this.setPosition(top,1000);
+  Dancer.prototype.lineUp.call(this, top, 1000);
 }
