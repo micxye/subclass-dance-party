@@ -31,4 +31,10 @@ describe('pigDancer', function() {
       expect(pigDancer.step.callCount).to.be.equal(2);
     });
   });
+
+  it('should have a lineUp function that lines it up', function() {
+    sinon.spy(pigDancer, 'lineUp');
+    pigDancer.lineUp();
+    expect(pigDancer.lineUp.called).to.be.true;
+  });
 });

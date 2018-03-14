@@ -31,4 +31,10 @@ describe('chickenDancer', function() {
       expect(chickenDancer.step.callCount).to.be.equal(2);
     });
   });
+
+  it('should have a lineUp function that lines it up', function() {
+    sinon.spy(chickenDancer, 'lineUp');
+    chickenDancer.lineUp();
+    expect(chickenDancer.lineUp.called).to.be.true;
+  });
 });
